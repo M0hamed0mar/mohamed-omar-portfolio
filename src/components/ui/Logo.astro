@@ -1,0 +1,54 @@
+﻿---
+import { personal } from '@/data/personal';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className = 'h-9 w-9' } = Astro.props;
+const { logoDark, logoLight } = personal;
+---
+
+<span class:list={['logo-wrapper relative inline-block', className]}>
+  <img
+    src={logoLight}
+    alt="Mohamed Omar logo"
+    width="40"
+    height="40"
+    class="logo-light-img absolute inset-0 h-full w-full object-contain"
+    loading="eager"
+    decoding="async"
+  />
+  <img
+    src={logoDark}
+    alt="Mohamed Omar logo"
+    width="40"
+    height="40"
+    class="logo-dark-img absolute inset-0 h-full w-full object-contain"
+    loading="eager"
+    decoding="async"
+  />
+</span>
+
+<style>
+  .logo-light-img {
+    display: block;
+  }
+  .logo-dark-img {
+    display: none;
+  }
+
+  :global(.dark) .logo-light-img {
+    display: none;
+  }
+  :global(.dark) .logo-dark-img {
+    display: block;
+  }
+
+  :global(.light) .logo-light-img {
+    display: block;
+  }
+  :global(.light) .logo-dark-img {
+    display: none;
+  }
+</style>

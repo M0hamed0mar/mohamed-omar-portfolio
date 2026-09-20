@@ -1,0 +1,151 @@
+﻿---
+import { personal } from '@/data/personal';
+
+const { bio, cards } = personal;
+
+const focusAreas = [
+  {
+    title: 'RAG Systems',
+    description: 'Production-grade retrieval pipelines with hybrid search, reranking, and citation support.',
+    icon: 'search',
+  },
+  {
+    title: 'Multi-Agent Systems',
+    description: 'Orchestrated LLM agents with routing, reflection, and critique-and-refinement loops.',
+    icon: 'agents',
+  },
+  {
+    title: 'Data Science and Analytics',
+    description: 'End-to-end ML pipelines, statistical analysis, and interactive data visualization.',
+    icon: 'chart',
+  },
+  {
+    title: 'MLOps and Evaluation',
+    description: 'Reproducible benchmarks, metric-driven iteration, and measurable quality improvements.',
+    icon: 'chart',
+  },
+  {
+    title: 'Cloud Deployment',
+    description: 'End-to-end deployment on AWS with Docker, ECS Fargate, and Application Load Balancers.',
+    icon: 'cloud',
+  },
+];
+---
+
+<section id="about" class="section border-t border-border">
+  <div class="container-custom">
+    <div class="max-w-3xl">
+      <p class="section-label">About</p>
+      <h2 class="section-title">
+        Building systems that work
+        <span class="text-gradient-violet">in production</span>
+      </h2>
+      <p class="section-description">{bio}</p>
+    </div>
+
+    <div class="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        focusAreas.map((area) => (
+          <div class="card card-hover group">
+            <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10 text-accent transition-colors group-hover:bg-accent/20">
+              {area.icon === 'search' && (
+                <svg
+                  class="h-5 w-5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <path d="m21 21-4.3-4.3"></path>
+                </svg>
+              )}
+              {area.icon === 'agents' && (
+                <svg
+                  class="h-5 w-5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <circle cx="12" cy="12" r="3"></circle>
+                  <circle cx="19" cy="5" r="2"></circle>
+                  <circle cx="5" cy="5" r="2"></circle>
+                  <circle cx="19" cy="19" r="2"></circle>
+                  <circle cx="5" cy="19" r="2"></circle>
+                  <path d="M12 9V6"></path>
+                  <path d="M12 18v-3"></path>
+                  <path d="M9 12H6"></path>
+                  <path d="M18 12h-3"></path>
+                </svg>
+              )}
+              {area.icon === 'chart' && (
+                <svg
+                  class="h-5 w-5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M3 3v18h18"></path>
+                  <path d="m19 9-5 5-4-4-3 3"></path>
+                </svg>
+              )}
+              {area.icon === 'cloud' && (
+                <svg
+                  class="h-5 w-5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+                </svg>
+              )}
+            </div>
+            <h3 class="mt-5 text-base font-semibold text-foreground">
+              {area.title}
+            </h3>
+            <p class="mt-2 text-sm leading-relaxed text-foreground-muted">
+              {area.description}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mt-16 grid gap-8 border-t border-border pt-10 sm:grid-cols-3">
+      {
+        cards.map((card) => (
+          <div>
+            <div class="font-display text-4xl font-semibold text-foreground md:text-5xl">
+              {card.value}
+            </div>
+            <div class="mt-2 text-xs uppercase tracking-wider text-foreground-subtle md:text-sm">
+              {card.label}
+            </div>
+            <div class="mt-3 text-sm leading-relaxed text-foreground-muted">
+              {card.description}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

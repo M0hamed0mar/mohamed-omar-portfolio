@@ -1,0 +1,93 @@
+﻿---
+import { experiences } from '@/data/experience';
+---
+
+<section id="experience" class="section border-t border-border">
+  <div class="container-custom">
+    <div class="max-w-3xl">
+      <p class="section-label">Career</p>
+      <h2 class="section-title">
+        Professional
+        <span class="text-gradient-violet">Experience</span>
+      </h2>
+      <p class="section-description">
+        A track record of building systems, teaching engineering, and delivering
+        results across freelance, academic, and industry roles.
+      </p>
+    </div>
+
+    <div class="mt-16">
+      <ol class="relative space-y-10">
+        <div
+          class="absolute left-3 top-2 bottom-2 w-px bg-border"
+          aria-hidden="true"
+        >
+        </div>
+
+        {
+          experiences.map((exp) => (
+            <li class="relative pl-10">
+              <div
+                class:list={[
+                  'absolute left-0 top-1.5 flex h-7 w-7 items-center justify-center rounded-full border-2',
+                  exp.current
+                    ? 'border-accent bg-accent/10'
+                    : 'border-border bg-background',
+                ]}
+              >
+                <span
+                  class:list={[
+                    'h-2 w-2 rounded-full',
+                    exp.current ? 'bg-accent animate-pulse' : 'bg-foreground-faint',
+                  ]}
+                >
+                </span>
+              </div>
+
+              <div class="flex flex-col gap-1 md:flex-row md:items-center md:justify-between">
+                <div>
+                  <h3 class="text-base font-semibold text-foreground md:text-lg">
+                    {exp.role}
+                  </h3>
+                  <p class="mt-0.5 text-sm text-accent">
+                    {exp.company}
+                    {exp.location && (
+                      <span class="text-foreground-subtle">
+                        {' - '}
+                        {exp.location}
+                      </span>
+                    )}
+                  </p>
+                </div>
+
+                <div class="flex items-center gap-2">
+                  {exp.current && (
+                    <span class="rounded-md border border-emerald/30 bg-emerald/5 px-2 py-0.5 font-mono text-2xs uppercase tracking-widest text-emerald">
+                      Current
+                    </span>
+                  )}
+                  <span class="font-mono text-xs text-foreground-subtle">
+                    {exp.duration}
+                  </span>
+                </div>
+              </div>
+
+              <p class="mt-3 text-sm leading-relaxed text-foreground-muted">
+                {exp.description}
+              </p>
+
+              <ul class="mt-3 space-y-1.5">
+                {exp.bullets.map((bullet) => (
+                  <li class="flex items-start gap-2 text-sm leading-relaxed text-foreground-subtle">
+                    <span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-foreground-faint"></span>
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </div>
+</section>

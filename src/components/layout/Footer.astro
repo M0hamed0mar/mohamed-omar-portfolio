@@ -1,0 +1,74 @@
+﻿---
+import Logo from '@/components/ui/Logo.astro';
+import { personal } from '@/data/personal';
+
+const { email, socials } = personal;
+const currentYear = new Date().getFullYear();
+
+const socialLinks = [
+  {
+    label: 'GitHub',
+    href: socials.github,
+  },
+  {
+    label: 'LinkedIn',
+    href: socials.linkedin,
+  },
+  {
+    label: 'WhatsApp',
+    href: socials.whatsapp,
+  },
+  {
+    label: 'Email',
+    href: `mailto:${email}`,
+  },
+];
+---
+
+<footer class="border-t border-border bg-background-subtle">
+  <div class="container-custom py-12 md:py-16">
+    <div class="grid gap-10 md:grid-cols-3">
+      <div class="md:col-span-2">
+        <a href="/" class="flex items-center gap-2.5" aria-label="Mohamed Omar - Home">
+          <Logo class="h-9 w-9 md:h-10 md:w-10" />
+          <span class="text-base font-semibold tracking-tight text-foreground md:text-lg">
+            Mohamed Omar
+          </span>
+        </a>
+        <p class="mt-4 max-w-md text-sm text-foreground-muted">
+          AI Engineer specializing in production-grade RAG pipelines, multi-agent
+          architectures, and LLM-powered applications. Building systems that work
+          in production, with measurable results.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-xs font-mono uppercase tracking-widest text-foreground-subtle">
+          Connect
+        </h3>
+        <ul class="mt-4 space-y-3">
+          {
+            socialLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  target={link.href.startsWith('http') ? '_blank' : undefined}
+                  rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  class="inline-flex items-center gap-2 text-sm text-foreground-muted hover:text-accent transition-colors"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 border-t border-border pt-6">
+      <p class="text-xs text-foreground-subtle">
+        {currentYear} Mohamed Omar. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>

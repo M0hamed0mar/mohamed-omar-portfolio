@@ -1,0 +1,12 @@
+﻿# robots.txt for Mohamed Omar Portfolio
+# https://mohamedomar.dev
+
+User-agent: *
+Allow: /
+
+# Disallow admin/internal paths (if added later)
+Disallow: /api/
+Disallow: /_astro/
+
+# Sitemap location
+Sitemap: https://mohamedomar.dev/sitemap-index.xml

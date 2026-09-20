@@ -1,0 +1,53 @@
+﻿---
+import { allProjects } from '@/data/projects';
+import ProjectCard from '@/components/ui/ProjectCard.astro';
+
+const displayedProjects = allProjects.slice(0, 5);
+---
+
+<section id="projects" class="section border-t border-border">
+  <div class="container-custom">
+    <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+      <div class="max-w-3xl">
+        <p class="section-label">Selected Work</p>
+        <h2 class="section-title">
+          Featured
+          <span class="text-gradient-violet">Projects</span>
+        </h2>
+        <p class="section-description">
+          Production-grade systems built end-to-end. From retrieval pipelines
+          and multi-agent architectures to full cloud deployment.
+        </p>
+      </div>
+
+      <a
+        href="/projects"
+        class="link-underline inline-flex shrink-0 items-center gap-1.5 text-sm font-medium"
+      >
+        View all projects
+        <svg
+          class="h-3.5 w-3.5"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M5 12h14"></path>
+          <path d="m12 5 7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+
+    <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        displayedProjects.map((project) => (
+          <ProjectCard project={project} />
+        ))
+      }
+    </div>
+  </div>
+</section>
