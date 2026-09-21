@@ -10,10 +10,10 @@ interface Props {
 const {
   title = 'Mohamed Omar - AI Engineer',
   description = 'AI Engineer specializing in production-grade RAG pipelines, multi-agent architectures, and LLM-powered applications.',
-  image = '/og-image.webp',
+  image = '/og-image.png',
 } = Astro.props;
 
-const siteUrl = Astro.site?.toString() || 'https://mohamedomar.dev';
+const siteUrl = Astro.site?.toString() || 'https://mohamed-omar-portfolio-livid.vercel.app';
 const canonicalURL = new URL(Astro.url.pathname, siteUrl);
 const ogImage = new URL(image, siteUrl);
 ---
@@ -39,6 +39,8 @@ const ogImage = new URL(image, siteUrl);
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:secure_url" content={ogImage} />
+    <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Mohamed Omar - AI Engineer" />
@@ -48,6 +50,7 @@ const ogImage = new URL(image, siteUrl);
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content="Mohamed Omar - AI Engineer" />
 
     <meta name="theme-color" content="#0A0A0B" />
 
@@ -75,4 +78,3 @@ const ogImage = new URL(image, siteUrl);
     <slot />
   </body>
 </html>
-
